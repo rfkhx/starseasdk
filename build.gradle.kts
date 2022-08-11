@@ -2,6 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "1.7.10"
+    `maven-publish`
 }
 
 group = "top.ntutn.starsea"
@@ -20,5 +21,17 @@ tasks.test {
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.jvmTarget = "11"
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "top.ntutn.starsea"
+            artifactId = "sdk"
+            version = "1.0.0"
+
+            from(components["kotlin"])
+        }
+    }
 }
