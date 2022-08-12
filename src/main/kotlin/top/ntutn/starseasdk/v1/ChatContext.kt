@@ -64,7 +64,7 @@ interface IChatContext: ChatContext {
      * 使用本地图片进行回复
      * @see IBotContext.sendLocalPhoto
      */
-    fun replyWithLocalPhoto(photoUrl: String)
+    fun replyWithLocalPhoto(photoUrl: File)
 }
 
 /**
