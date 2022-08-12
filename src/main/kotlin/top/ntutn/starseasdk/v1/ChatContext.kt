@@ -1,5 +1,7 @@
 package top.ntutn.starseasdk.v1
 
+import java.io.File
+
 /**
  * 机器人全局上下文。在插件加载后随时可用。用于主动行为，如主动向用户发送消息。
  */
@@ -25,7 +27,7 @@ interface IBotContext {
      * 向其他用户发送本地图片
      * @param photoFile 本地图片文件。大小限制10M，宽高不能超过10000，宽高比不能超过20。
      */
-    fun sendLocalPhoto(chatId: String, photoFile: String)
+    fun sendLocalPhoto(chatId: String, photoFile: File)
 }
 
 /**
