@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "top.ntutn.starsea"
-version = "1.0-SNAPSHOT"
+version = "1.1.0"
 
 repositories {
     mavenCentral()
@@ -29,7 +29,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "top.ntutn.starsea"
             artifactId = "sdk"
-            version = "1.0.0"
+            version = project.version as String
 
             from(components["kotlin"])
         }
