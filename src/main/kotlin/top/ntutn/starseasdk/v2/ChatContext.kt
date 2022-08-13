@@ -1,10 +1,12 @@
 package top.ntutn.starseasdk.v2
 
+import top.ntutn.starseasdk.proxy.NewestApi
 import java.io.File
 
 /**
  * 机器人全局上下文。在插件加载后随时可用。用于主动行为，如主动向用户发送消息。
  */
+@NewestApi
 interface IBotContext {
     /**
      * 向其他用户发送文本内容
@@ -30,7 +32,7 @@ interface IBotContext {
     fun sendLocalPhoto(chatId: String, photoFile: File)
 }
 
-
+@NewestApi
 interface IChatContext {
     /**
      * 发送方chat_id
@@ -65,6 +67,7 @@ interface IChatContext {
 /**
  * 文本消息上下文
  */
+@NewestApi
 interface ITextChatContext: IChatContext {
     /**
      * 收到的文本内容
@@ -86,6 +89,7 @@ interface ITextChatContext: IChatContext {
 /**
  * 一个图片文件尺寸资源
  */
+@NewestApi
 interface IPhotoSize {
     val fileId: String
     val width: Int
@@ -95,6 +99,7 @@ interface IPhotoSize {
 /**
  * 图片上下文
  */
+@NewestApi
 interface IPhotoChatContext: IChatContext {
     /**
      * 文本内容，如果有

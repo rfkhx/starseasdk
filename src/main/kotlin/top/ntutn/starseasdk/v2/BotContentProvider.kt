@@ -1,8 +1,11 @@
 package top.ntutn.starseasdk.v2
 
+import top.ntutn.starseasdk.proxy.NewestApi
+
 /**
  * 机器人功能接口，需要插件来实现
  */
+@NewestApi
 interface BotContentProvider {
     val pluginName: String
 
