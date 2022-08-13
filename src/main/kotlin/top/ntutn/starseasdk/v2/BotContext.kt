@@ -1,4 +1,4 @@
-package top.ntutn.starseasdk.v1
+package top.ntutn.starseasdk.v2
 
 import java.util.ServiceLoader
 
