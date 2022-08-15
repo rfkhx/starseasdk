@@ -3,11 +3,32 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.7.10"
     kotlin("kapt")  version "1.7.10"
+    id("java-gradle-plugin")
     `maven-publish`
 }
 
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // 因为使用的 Kotlin 需要需要添加 Kotlin 插件
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10")
+    }
+}
+
+gradlePlugin {
+    plugins {
+        register("aliasPlugin") {
+            id = "top.ntutn.starsea.alias"
+            implementationClass = "top.ntutn.starseasdk.proxy.AliasPlugin"
+        }
+    }
+}
+
 group = "top.ntutn.starsea"
-version = "1.2.0"
+version = "1.2.1"
 
 repositories {
     mavenCentral()
