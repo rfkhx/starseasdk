@@ -29,7 +29,7 @@ gradlePlugin {
 }
 
 group = "top.ntutn.starsea"
-version = "1.2.4"
+version = "1.2.5"
 
 buildConfig {
     buildConfigField("String", "version", "\"$version\"")
@@ -45,7 +45,7 @@ dependencies {
     compileOnly("com.google.auto.service", "auto-service-annotations", autoService)
     kapt("com.google.auto.service", "auto-service", autoService)
 
-//    kapt("com.github.rfkhx:starseasdk:1.2.2")
+//    kapt("com.github.rfkhx:starseasdk:1.2.4")
 
     testImplementation(kotlin("test"))
 }

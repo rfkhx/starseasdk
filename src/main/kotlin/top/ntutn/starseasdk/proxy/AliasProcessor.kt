@@ -33,8 +33,8 @@ class AliasProcessor : AbstractProcessor() {
         """.trimIndent()
         outputContent += roundEnvironment.getElementsAnnotatedWith(NewestApi::class.java).mapNotNull {
             it as TypeElement
-            it.qualifiedName
-        }.joinToString(", ", "listOf(", ")")
+            "\"${it.qualifiedName}\""
+        }.joinToString(",\n        ", "listOf(", ")")
         outputContent += "\n}"
         val filerSourceFile: FileObject = processingEnv.filer.createResource(
             StandardLocation.SOURCE_OUTPUT,
