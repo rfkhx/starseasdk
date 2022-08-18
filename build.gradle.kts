@@ -23,13 +23,13 @@ gradlePlugin {
     plugins {
         register("aliasPlugin") {
             id = "top.ntutn.starsea.alias"
-            implementationClass = "top.ntutn.starseasdk.proxy.AliasPlugin"
+            implementationClass = "top.ntutn.starseasdk.proxy.StarseaPlugin"
         }
     }
 }
 
 group = "top.ntutn.starsea"
-version = "1.2.5"
+version = "1.2.6"
 
 buildConfig {
     buildConfigField("String", "version", "\"$version\"")
@@ -45,7 +45,7 @@ dependencies {
     compileOnly("com.google.auto.service", "auto-service-annotations", autoService)
     kapt("com.google.auto.service", "auto-service", autoService)
 
-//    kapt("com.github.rfkhx:starseasdk:1.2.4")
+    kapt("com.github.rfkhx:starseasdk:1.2.5")
 
     testImplementation(kotlin("test"))
 }

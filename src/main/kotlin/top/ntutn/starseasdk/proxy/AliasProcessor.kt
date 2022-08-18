@@ -38,7 +38,7 @@ class AliasProcessor : AbstractProcessor() {
         outputContent += "\n}"
         val filerSourceFile: FileObject = processingEnv.filer.createResource(
             StandardLocation.SOURCE_OUTPUT,
-            outputPackageName, "CompatAlias.kt"
+            outputPackageName, "NewestApiInformation.kt"
         )
         with(filerSourceFile.openOutputStream()) {
             write(outputContent.toByteArray())

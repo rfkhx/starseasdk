@@ -5,9 +5,14 @@ import org.gradle.api.Project
 import org.gradle.api.artifacts.DependencyResolutionListener
 import org.gradle.api.artifacts.DependencySet
 import org.gradle.api.artifacts.ResolvableDependencies
+import org.gradle.api.provider.Property
 import top.ntutn.starsea.starseasdk.BuildConfig
 
-class AliasPlugin: Plugin<Project>, DependencyResolutionListener {
+interface StarseaPluginExtension {
+    val packageName: Property<String>
+}
+
+class StarseaPlugin: Plugin<Project>, DependencyResolutionListener {
     private lateinit var project: Project
     private lateinit var compileOnlyDependencies: DependencySet
     private lateinit var task: GenerateAliasFileTask
@@ -27,6 +32,7 @@ class AliasPlugin: Plugin<Project>, DependencyResolutionListener {
     }
 
     override fun afterResolve(dependencies: ResolvableDependencies) {
-        task.generate()
+        val extension = project.extensions.create("starsea", StarseaPluginExtension::class.java)
+        task.generate(extension.packageName.get())
     }
 }
