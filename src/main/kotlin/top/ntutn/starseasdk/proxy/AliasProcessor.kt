@@ -17,8 +17,7 @@ class AliasProcessor : AbstractProcessor() {
         if (set.isNullOrEmpty() || roundEnvironment == null) {
             return false
         }
-        val outputPackageName = processingEnv.options["aliasprocessor.package"]!!
-        val suffix = processingEnv.options["aliasprocessor.suffix"]?:""
+        val outputPackageName = "top.ntutn.starseasdk.proxy"
         var outputContent = """
             package $outputPackageName
             
@@ -28,11 +27,15 @@ class AliasProcessor : AbstractProcessor() {
              * 用于固定包名，避免升级版本号后有一大片包名要改
              * have a nice day.
              */
+             
+             object NewestApiInformation {
+                val newestApiClassNames = 
         """.trimIndent()
-        roundEnvironment.getElementsAnnotatedWith(NewestApi::class.java).forEach {
+        outputContent += roundEnvironment.getElementsAnnotatedWith(NewestApi::class.java).mapNotNull {
             it as TypeElement
-            outputContent += "\ntypealias ${it.simpleName}${suffix} = ${it.qualifiedName}\n"
-        }
+            it.qualifiedName
+        }.joinToString(", ", "listOf(", ")")
+        outputContent += "\n}"
         val filerSourceFile: FileObject = processingEnv.filer.createResource(
             StandardLocation.SOURCE_OUTPUT,
             outputPackageName, "CompatAlias.kt"
