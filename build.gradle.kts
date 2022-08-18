@@ -45,7 +45,7 @@ dependencies {
     compileOnly("com.google.auto.service", "auto-service-annotations", autoService)
     kapt("com.google.auto.service", "auto-service", autoService)
 
-    kapt("com.github.rfkhx:starseasdk:1.2.2")
+//    kapt("com.github.rfkhx:starseasdk:1.2.2")
 
     testImplementation(kotlin("test"))
 }
