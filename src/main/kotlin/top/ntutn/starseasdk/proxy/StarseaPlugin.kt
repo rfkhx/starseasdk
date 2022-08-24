@@ -27,7 +27,7 @@ class StarseaPlugin: Plugin<Project>, DependencyResolutionListener {
     }
 
     override fun beforeResolve(dependencies: ResolvableDependencies) {
-        compileOnlyDependencies.add(project.dependencies.create("com.github.rfkhx:starseasdk:${BuildConfig.version}"))
+//        compileOnlyDependencies.add(project.dependencies.create("com.github.rfkhx:starseasdk:${BuildConfig.version}"))
         project.gradle.removeListener(this)
     }
 

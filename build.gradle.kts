@@ -29,7 +29,7 @@ gradlePlugin {
 }
 
 group = "top.ntutn.starsea"
-version = "1.2.8"
+version = "1.2.9"
 
 buildConfig {
     buildConfigField("String", "version", "\"$version\"")
